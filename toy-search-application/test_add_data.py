@@ -32,11 +32,13 @@ books_schema = {
   'default_sorting_field': 'ratings_count'
 }
 
+client.collections['books'].delete()
+
 #make the schema
 client.collections.create(books_schema)
 
 #add the data to the schema 
-with open('/tmp/books.jsonl') as jsonl_file:
+with open('books.jsonl') as jsonl_file:
   client.collections['books'].documents.import_(jsonl_file.read().encode('utf-8'))
 
 
