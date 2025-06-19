@@ -25,7 +25,7 @@ Notes --
 - Typesense is designed to be a secondary data store. Meaning, you want to use another primary database to store the primary copy of your data, where your application writes data into. You'd then sync a copy of the data into Typesense in order to support one of the use-cases above.
 - https://typesense.org/docs/guide/installing-a-client.html
 - For each field, we define its name, type and whether it's a facet field. A facet field allows us to cluster the search results into categories and lets us drill into each of those categories. We will be seeing faceted results in action at the end of this guide.
-- 
+- https://github.com/typesense/typesense-python/blob/master/examples/alias_operations.py
 
 
 
