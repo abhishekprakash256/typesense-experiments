@@ -18,8 +18,8 @@ client = typesense.Client({
 
 
 
-#make the schema
-books_schema = {
+#make the collection , name books is used 
+books_collection = {
   'name': 'books',
   'fields': [
     {'name': 'title', 'type': 'string' },
@@ -34,8 +34,8 @@ books_schema = {
 
 client.collections['books'].delete()
 
-#make the schema
-client.collections.create(books_schema)
+#make the collection
+client.collections.create(books_collection)
 
 #add the data to the schema 
 with open('books.jsonl') as jsonl_file:
