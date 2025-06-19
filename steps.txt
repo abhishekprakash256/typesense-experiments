@@ -1,6 +1,6 @@
 
 
-Commands -- 
+Commands to setup the repo -- 
 
 pull the docker images 
 
