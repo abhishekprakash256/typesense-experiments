@@ -17,13 +17,11 @@ pip install typesense
 
 
 
-
-
 Notes -- 
 
 
 - Typesense is designed to be a secondary data store. Meaning, you want to use another primary database to store the primary copy of your data, where your application writes data into. You'd then sync a copy of the data into Typesense in order to support one of the use-cases above.
--  https://typesense.org/docs/guide/installing-a-client.html
+- https://typesense.org/docs/guide/installing-a-client.html
 - 
 
 
