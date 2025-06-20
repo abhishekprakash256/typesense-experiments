@@ -15,6 +15,13 @@ pip install typesense
 
 
 
+System reqs -- 
+
+- The Typesense process itself is quite light-weight and only takes up about 20MB of RAM when there's no data indexed. The amount of RAM required is completely dependent on the size of the data you index.
+- If the size of your dataset (only including fields you want to search on) is X MB, you'd typically need 2X-3X MB RAM to index the data in Typesense.
+- 
+
+
 
 
 
@@ -28,6 +35,7 @@ Notes --
 - https://github.com/typesense/typesense-python/blob/master/examples/alias_operations.py
 - We can make rule for the analytics 
 - We can run the muti query for search in the typense 
+- https://typesense.org/docs/guide/system-requirements.html#choosing-ram
 
 
 
