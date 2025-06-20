@@ -26,6 +26,9 @@ Notes --
 - https://typesense.org/docs/guide/installing-a-client.html
 - For each field, we define its name, type and whether it's a facet field. A facet field allows us to cluster the search results into categories and lets us drill into each of those categories. We will be seeing faceted results in action at the end of this guide.
 - https://github.com/typesense/typesense-python/blob/master/examples/alias_operations.py
+- We can make rule for the analytics 
+- We can run the muti query for search in the typense 
+
 
 
 
