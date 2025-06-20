@@ -6,11 +6,12 @@ This repo is for experimenting with [Typesense](https://typesense.org) — an op
 
 ### 1. Run Typesense (Docker)
 ```bash
-docker run -d \
-  -p 8108:8108 \
-  -v$(pwd)/data:/data \
-  typesense/typesense:0.25.1 \
-  --data-dir /data --api-key=test_key --enable-cors
+export TYPESENSE_API_KEY=test_key
+
+docker pull typesense/typesense:29.0.rc30   #use the tags , pull the docker image
+
+docker run -d --name typesense -p 8108:8108 -v$(pwd)/typesense-data:/data typesense/typesense:29.0.rc30 --data-dir /data --api-key=$TYPESENSE_API_KEY --enable-cors
+
 ````
 
 ### 2. Python Client Install
