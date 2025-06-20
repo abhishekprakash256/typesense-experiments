@@ -87,6 +87,6 @@ client.collections['books'].delete()
 
 * [Typesense Docs](https://typesense.org/docs/)
 * [Python Client Docs](https://typesense.org/docs/0.25.1/api/python.html)
-
-```
+- https://github.com/typesense/typesense-python/blob/master/examples/alias_operations.py
+- https://typesense.org/docs/guide/installing-a-client.html
 
