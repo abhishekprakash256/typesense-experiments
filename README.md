@@ -1,6 +1,3 @@
-Sure! Here's a simple and clean `README.md` for a Typesense experimentation project:
-
-````markdown
 # Typesense Experiments
 
 This repo is for experimenting with [Typesense](https://typesense.org) — an open-source typo-tolerant search engine optimized for fast and relevant search experiences.
