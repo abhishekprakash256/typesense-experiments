@@ -20,6 +20,23 @@ System reqs --
 - The Typesense process itself is quite light-weight and only takes up about 20MB of RAM when there's no data indexed. The amount of RAM required is completely dependent on the size of the data you index.
 - If the size of your dataset (only including fields you want to search on) is X MB, you'd typically need 2X-3X MB RAM to index the data in Typesense.
 
+what is collection -- 
+
+is like a schema , pre defined and auto-definition schema, for the auto no need for name and type as well, after the first doc is send the type is changed , conflict is possible when the data type is not defined , proper types is always imp 
+metadata can be added as well 
+faceting can be imp but not now 
+retrive all the collection 
+and delete the collection 
+also keep the collection schema while keeping the data , using truncate 
+docs can be indexed 
+batch size is imp 
+search func takes the paramater we can use 
+
+
+
+
+
+
 
 
 
