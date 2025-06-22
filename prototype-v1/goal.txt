@@ -1,0 +1,16 @@
+- read the data from json 
+- make the collection
+- put the data in 
+- search the collection (query the docker container) 
+
+
+commands -- 
+
+pull the docker images 
+
+export TYPESENSE_API_KEY=test_key
+
+docker pull typesense/typesense:29.0.rc30   #use the tags 
+
+docker run -d --name typesense -p 8108:8108 -v$(pwd)/typesense-data:/data typesense/typesense:29.0.rc30 --data-dir /data --api-key=$TYPESENSE_API_KEY --enable-cors  
+

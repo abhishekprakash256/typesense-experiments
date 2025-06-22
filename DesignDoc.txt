@@ -1,0 +1,24 @@
+reqs -- 
+
+search keywords , one or multiple (partial match)
+fuzzy matching with auto correction 
+auto suggestion completion
+
+
+stack -- 
+
+data exists in mongo container (mongo container)
+data syncs from mongo container to typesense (typense contgainer)
+run scripts for import from mongo to typese (python)
+search (from docker or make a wrapper ? )
+
+
+
+prototype -- 
+
+1st 
+read the json file and insert the data 
+make the collection with pre defined schema 
+mess with search paramter and see which give better results 
+
+
