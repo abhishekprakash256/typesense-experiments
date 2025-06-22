@@ -11,7 +11,7 @@ convert the json file to jonsl file
 insert that jsonl file to typesnese
 """
 
-
+import json
 import mongo_helper_kit
 from config import DB_NAME, COLLECTION_NAME, MONGO_HOST_NAME, FILE_PATH
 
@@ -21,23 +21,33 @@ from config import DB_NAME, COLLECTION_NAME, MONGO_HOST_NAME, FILE_PATH
 mongo_client = mongo_helper_kit.create_mongo_client(MONGO_HOST_NAME)
 
 
-def show_all_data(db_name,collection_name):
+import json
+
+def show_all_data(db_name, collection_name, output_file="output.json"):
     """
-    Show the data in the collection
+    Retrieve all documents from a MongoDB collection and save them into a JSON file.
     """
     db = mongo_client[db_name]
     collection = db[collection_name]
 
-
     if collection is not None:
-        # Retrieve all documents in the collection
+        # Retrieve all documents
         documents = collection.find()
 
-        # Print each document
+        # Convert to list and transform _id to string
+        data_list = []
         for document in documents:
-            print(document)
+            document["_id"] = str(document["_id"])  # Convert ObjectId to string
+            data_list.append(document)
+
+        # Save to JSON file
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(data_list, f, indent=2, ensure_ascii=False)
+
+        print(f"✅ Data exported to {output_file}")
     else:
         print("No collection available. Please create a collection first.")
+
 
 
 
