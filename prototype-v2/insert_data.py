@@ -159,7 +159,6 @@ with open(DATA_FILE_PATH) as jsonl_file:
 
 
 
-
 #export the data and check
 export_output = client.collections['articles'].documents.export()
 print(export_output)

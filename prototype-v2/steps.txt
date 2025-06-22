@@ -20,3 +20,4 @@ The steps --
 
 - the data is ingested with using data_ingestion.py
 - config.py file has the file location
+- 
