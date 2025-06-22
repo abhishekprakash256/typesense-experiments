@@ -14,3 +14,4 @@ docker pull typesense/typesense:29.0.rc30   #use the tags
 
 docker run -d --name typesense -p 8108:8108 -v$(pwd)/typesense-data:/data typesense/typesense:29.0.rc30 --data-dir /data --api-key=$TYPESENSE_API_KEY --enable-cors  
 
+jq -c '.[]' test_data.json > test_data.jsonl     #use this command to convert to jsonl data 

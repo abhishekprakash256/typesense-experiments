@@ -67,12 +67,14 @@ parent_dir = os.path.dirname(curr_dir)
 
 
 #data file path 
-DATA_FILE_PATH = parent_dir + "/test_data.json"
+DATA_FILE_PATH = parent_dir + "/test_data.jsonl"
+
 
 #read the json data 
+"""
 with open(DATA_FILE_PATH, 'r') as file:
     data = json.load(file)
-
+"""
 
 
 
@@ -196,8 +198,14 @@ print(retrieve_response)
 
 
 #add the data to the schema or test_data
-client.collections['articles'].documents.create(test_data)
+#client.collections['articles'].documents.create(test_data)
+
+with open(DATA_FILE_PATH) as jsonl_file:
+    data = jsonl_file.read().encode('utf-8')
+    response = client.collections['articles'].documents.import_(data)
+    print(response)
 
 
+#export the data and check
 export_output = client.collections['articles'].documents.export()
 print(export_output)
