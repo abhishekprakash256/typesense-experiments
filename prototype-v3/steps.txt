@@ -37,7 +37,7 @@ steps --
 -- export TYPESENSE_API_KEY=test_key
 -- docker run -d --name typesense -p 8108:8108 -v$(pwd)/typesense-data:/data typesense/typesense:29.0.rc30 --data-dir /data --api-key=$TYPESENSE_API_KEY --enable-cors
 
-3. insert the data into the mongo container , we need the test_data.json file , the loc can be configured 
+3. insert the data into the mongo container , we need the test_data.json file , the loc can be configured , delete db shoulb be commented
 
 -- using the data_ingestion_mongo.py file 
 
@@ -45,7 +45,7 @@ steps --
 
 -- using etl_data_json.py 
 
-5. insert the data into the typesene , using the data_ingestion_typesense file , that uses the output.jsonl file
+5. insert the data into the typesene , using the data_ingestion_typesense file , that uses the output.jsonl file, delete collection is commented 
 
 -- using data_ingestion_typesense.py 
 

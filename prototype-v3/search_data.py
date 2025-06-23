@@ -23,7 +23,7 @@ client = typesense.Client({
 #make the search paramaters
 search_parameters = {
   'q'         : 'neual',
-  'query_by'  : 'article_data.markdown_data',
+  'query_by'  : 'article_data',
   
 
 }
