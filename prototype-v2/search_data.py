@@ -22,7 +22,7 @@ client = typesense.Client({
 
 #make the search paramaters
 search_parameters = {
-  'q'         : 'tech',
+  'q'         : 'json',
   'query_by'  : 'article_data.markdown_data'
 }
 
