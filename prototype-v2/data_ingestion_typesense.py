@@ -18,7 +18,7 @@ parent_dir = os.path.dirname(curr_dir)
 
 
 #data file path 
-#DATA_FILE_PATH = parent_dir + "/test_data.jsonl"
+DATA_FILE_PATH = parent_dir + "/output.jsonl"
 
 
 #read the json data 
@@ -101,6 +101,7 @@ article_schema = {
     "enable_nested_fields" : True, 
     "fields": [
 
+        {"name" : "_id" , "type": "string"},
         {"name": "article_name", "type": "string"},
         {"name": "slug", "type": "string"},
         {"name": "article_image" , "type": "string" },
@@ -150,12 +151,11 @@ print(retrieve_response)
 
 #add the data to the schema or test_data
 #client.collections['articles'].documents.create(test_data)
-"""
 with open(DATA_FILE_PATH) as jsonl_file:
     data = jsonl_file.read().encode('utf-8')
     response = client.collections['articles'].documents.import_(data)
     print(response)
-"""
+
 
 
 

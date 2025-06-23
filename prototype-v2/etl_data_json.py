@@ -17,13 +17,12 @@ from config import DB_NAME, COLLECTION_NAME, MONGO_HOST_NAME, FILE_PATH
 
 
 
-
+#make the mongo cleint
 mongo_client = mongo_helper_kit.create_mongo_client(MONGO_HOST_NAME)
 
 
-import json
 
-def show_all_data(db_name, collection_name, output_file="output.json"):
+def data_to_json(db_name, collection_name, output_file="output.json"):
     """
     Retrieve all documents from a MongoDB collection and save them into a JSON file.
     """
@@ -44,11 +43,12 @@ def show_all_data(db_name, collection_name, output_file="output.json"):
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump(data_list, f, indent=2, ensure_ascii=False)
 
-        print(f"✅ Data exported to {output_file}")
+        print(f"Data exported to {output_file}")
     else:
         print("No collection available. Please create a collection first.")
 
 
 
+if __name__ == "__main__" :
 
-show_all_data(DB_NAME,COLLECTION_NAME)
+    data_to_json(DB_NAME,COLLECTION_NAME)

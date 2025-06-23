@@ -21,5 +21,6 @@ The steps --
 - the data is ingested with using data_ingestion.py
 - config.py file has the file location
 - take the data from the collection and put into json 
+- delete the dummy data from mongo before extraction
 - convert to jsonl file 
 - ingest the data to typesense 
