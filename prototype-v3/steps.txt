@@ -1,0 +1,51 @@
+- remove the dummy data that is added 
+- add the data 
+- the fuzzy search is default by 2 
+- make the json as per front-end for return data 
+- prediction while seraching 
+
+
+- run the mongodb container 
+- run the typesense container 
+- insert the data from mongo to typesense 
+- query the data 
+
+
+# Commands 
+
+- docker run -d --name mongo-db -p 27017:27017 mongo
+- ingest the data using mongo helper kit , python3 prototype-v2/data_ingestion.py
+- export TYPESENSE_API_KEY=test_key
+- docker run -d --name typesense -p 8108:8108 -v$(pwd)/typesense-data:/data typesense/typesense:29.0.rc30 --data-dir /data --api-key=$TYPESENSE_API_KEY --enable-cors 
+
+
+# to convert the json to jsonl
+jq -c '.[]' test_data.json > test_data.jsonl     #use this command to convert to jsonl data
+
+
+
+
+steps --
+
+1. run the mongo docker container -- 
+    -- docker run -d --name mongo-db -p 27017:27017 mongo
+
+
+2. run the typesense docker container --
+   remove the prev data if any 
+
+-- export TYPESENSE_API_KEY=test_key
+-- docker run -d --name typesense -p 8108:8108 -v$(pwd)/typesense-data:/data typesense/typesense:29.0.rc30 --data-dir /data --api-key=$TYPESENSE_API_KEY --enable-cors
+
+3. insert the data into the mongo container , we need the test_data.json file , the loc can be configured 
+
+-- using the data_ingestion_mongo.py file 
+
+4 create the jsonl file , it will create the jsonl file as well 
+
+-- using etl_data_json.py 
+
+5. insert the data into the typesene , using the data_ingestion_typesense file , that uses the output.jsonl file
+
+-- using data_ingestion_typesense.py 
+
