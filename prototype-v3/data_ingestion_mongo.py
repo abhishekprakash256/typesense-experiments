@@ -41,7 +41,7 @@ def initialize_helper(host_name):
 
 def perform_database_operations():
     """
-    Perform various database operations:
+    Perform various database operations:  
     - Create database and collection (optional)
     - Insert data
     - Delete database (CAUTION!)
