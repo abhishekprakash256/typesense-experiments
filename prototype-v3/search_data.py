@@ -4,9 +4,7 @@ search the data in the typesense
 
 import typesense
 import mongo_helper_kit
-
-
-
+from bson.objectid import ObjectId
 from config import DB_NAME, COLLECTION_NAME, MONGO_HOST_NAME, FILE_PATH
 
 
@@ -26,7 +24,7 @@ client = typesense.Client({
 
 #make the search paramaters
 search_parameters = {
-  'q'         : 'neual',
+  'q'         : 'neual network',
   'query_by'  : 'article_data'
 
 }
@@ -47,6 +45,24 @@ print(id_numbers)
 
 
 #get the data from mongo using the id number 
-mongo_helper = mongo_helper_kit.Helper_fun(MONGO_HOST_NAME)
+mongo_client = mongo_helper_kit.create_mongo_client(MONGO_HOST_NAME)
+
+
+db = mongo_client[DB_NAME]
+collection = db[COLLECTION_NAME]
+
+obj_id = ObjectId(id_numbers[0])
+
+
+# Find the document
+doc = collection.find_one({"_id": obj_id})
+
+# Print the result
+if doc:
+    print(doc)
+else:
+    print("No document found with that _id.")
+
+
 
 
