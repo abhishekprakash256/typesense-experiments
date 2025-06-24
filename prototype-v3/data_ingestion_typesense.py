@@ -21,7 +21,7 @@ parent_dir = os.path.dirname(curr_dir)
 #DATA_FILE_PATH = parent_dir + "output.jsonl"
 
 
-DATA_FILE_PATH = "output.jsonl"
+DATA_FILE_PATH = "flattened_output.jsonl"
 
 #read the json data 
 """
@@ -97,26 +97,22 @@ print(check_client())
 #this is the nested schema 
 #other stragety can be using the flatten the data and then use it 
 
-
 article_schema = {
-    "name": "articles",  # Collection name
-    "enable_nested_fields" : True, 
+    "name": "articles",
+    "enable_nested_fields": True,
     "fields": [
-
-        {"name" : "_id" , "type": "string"},
+        {"name": "id", "type": "string"},  # Required primary key
         {"name": "article_name", "type": "string"},
         {"name": "slug", "type": "string"},
-        {"name": "article_image" , "type": "string" },
-        {"name" : "article_para", "type" : "string"},
+        {"name": "article_image", "type": "string"},
+        {"name": "article_para", "type": "string"},
         {"name": "section_name", "type": "string", "facet": True},
-        {"name": "id_number", "type": "int32", "facet": False},
+        {"name": "id_number", "type": "int32"},
 
-        {"name": "article_data.title", "type" : "string[]" , "facet": True },
+        # Flattened nested fields
+        {"name": "article_data.title", "type": "string[]"},
         {"name": "article_data.article_para", "type": "string[]"},
         {"name": "article_data.markdown_data", "type": "string[]"},
-        
-        
-        
 
         # Links
         {"name": "github_url", "type": "string"},
@@ -128,15 +124,11 @@ article_schema = {
         {"name": "medium_url", "type": "string"},
         {"name": "demo_link", "type": "string"},
         {"name": "article_link", "type": "string"},
-        {"name": "more_link", "type": "string"},
-
-        # Nested/complex data: flatten or skip
-        # Typesense does not support nested objects like 'article_data', so you can either:
-        # 1. Skip it from indexing, or
-        # 2. Flatten relevant text content into one field (recommended)
+        {"name": "more_link", "type": "string"}
     ],
     "default_sorting_field": "id_number"
 }
+
 
 
 
@@ -148,6 +140,43 @@ client.collections.create(article_schema)
 #get the schema
 retrieve_response = client.collections['articles'].retrieve()
 print(retrieve_response)
+
+
+
+def flatten_article_jsonl(input_path, output_path):
+    with open(input_path, "r", encoding="utf-8") as infile, open(output_path, "w", encoding="utf-8") as outfile:
+        for line in infile:
+            doc = json.loads(line.strip())
+
+            # Convert _id to id
+            doc["id"] = str(doc.pop("_id"))
+
+            # Flatten article_data
+            titles = []
+            paras = []
+            markdowns = []
+
+            for entry in doc.get("article_data", []):
+                titles.append(entry.get("title", ""))
+                paras.append(entry.get("article_para", ""))
+                markdowns.append(entry.get("markdown_data", ""))
+
+            doc["article_data.title"] = titles
+            doc["article_data.article_para"] = paras
+            doc["article_data.markdown_data"] = markdowns
+
+            # Optional: remove the original article_data array
+            doc.pop("article_data", None)
+
+            # Write the flattened doc back to JSONL
+            outfile.write(json.dumps(doc) + "\n")
+
+    print(f"Flattened JSONL written to: {output_path}")
+
+
+
+
+flatten_article_jsonl("output.jsonl", "flattened_output.jsonl")
 
 
 
