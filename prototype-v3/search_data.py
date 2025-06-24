@@ -58,14 +58,16 @@ obj_id = ObjectId(id_numbers[0])
 doc = collection.find_one({"_id": obj_id})
 
 # Print the result
-"""
-if doc:
-    print(doc)
-else:
-    print("No document found with that _id.")
-"""
+
+#if doc:
+#    print(doc)
+#else:
+#    print("No document found with that _id.")
+
 
 # Execute the query and return results (sorted by `created_at` field)
+
+
 
 results = []
 
@@ -76,19 +78,15 @@ for id in id_numbers :
   # Find the document
   doc = collection.find_one({"_id": obj_id})
 
-  for article in doc:
-
-    print(article)
-    # Extract the necessary fields based on the new design
-    card = {
-        "card_title": article.get("article_name", ""),
-        "card_para": article.get("article_para", ""),
-        "img_src": article.get("article_image", ""),
-        "card_url": article.get("article_link", "")
-    }
-    results.append(card)
+  # Extract the necessary fields based on the new design
+  card = {
+      "card_title": doc.get("article_name", ""),
+      "card_para": doc.get("article_para", ""),
+      "img_src": doc.get("article_image", ""),
+      "card_url": doc.get("article_link", "")
+  }
+  results.append(card)
 
 print(results)
-
 
 
