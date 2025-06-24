@@ -90,3 +90,9 @@ for id in id_numbers :
 print(results)
 
 
+#mongo sesrach data 
+mongo_helper = mongo_helper_kit.Helper_fun(MONGO_HOST_NAME)
+
+print(mongo_helper.search_database(DB_NAME, COLLECTION_NAME, "neural"))
+
+
