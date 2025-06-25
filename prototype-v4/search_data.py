@@ -33,6 +33,9 @@ search_parameters = {
 #get the res
 res = client.collections['articles'].documents.search(search_parameters)
 
+#print the res 
+#print(res)
+
 
 #get the id number from the data
 id_numbers = [hit['document']['id'] for hit in res.get('hits', [])]
