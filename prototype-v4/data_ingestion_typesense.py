@@ -30,7 +30,7 @@ client = typesense.Client({
 
 
 #delete the collection if created 
-client.collections['articles'].delete()
+#client.collections['articles'].delete()
 
 
 
