@@ -1,0 +1,38 @@
+- get the data from the mongo 
+- insert into the typesense by directly reading from mongo 
+- take from collections 
+
+
+# Commands 
+
+- docker run -d --name mongo-db -p 27017:27017 mongo
+- ingest the data using mongo helper kit , python3 prototype-v2/data_ingestion.py
+- export TYPESENSE_API_KEY=test_key
+- docker run -d --name typesense -p 8108:8108 -v$(pwd)/typesense-data:/data typesense/typesense:29.0.rc30 --data-dir /data --api-key=$TYPESENSE_API_KEY --enable-cors 
+
+
+
+steps -- 
+
+1 .run the mongo conatiner 
+
+-- docker run -d --name mongo-db -p 27017:27017 mongo
+
+
+2. run the typesense docker container --
+   remove the prev data if any 
+
+-- export TYPESENSE_API_KEY=test_key
+-- docker run -d --name typesense -p 8108:8108 -v$(pwd)/typesense-data:/data typesense/typesense:29.0.rc30 --data-dir /data --api-key=$TYPESENSE_API_KEY --enable-cors
+
+3. insert the data into the mongo container , we need the test_data.json file , the loc can be configured , delete db shoulb be commented
+
+-- using the data_ingestion_mongo.py file 
+
+
+4. insert the data directly into the typesene from mongo 
+
+-- run the file data_ingestion_typesense.py
+
+
+
