@@ -22,3 +22,15 @@ make the collection with pre defined schema
 mess with search paramter and see which give better results 
 
 
+
+
+design final -- 
+
+make a repo typesense-etl
+
+read the data from mongo 
+ingest the data from mongo to typensense
+
+
+
+make the search 
